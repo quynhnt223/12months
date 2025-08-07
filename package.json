@@ -22,6 +22,7 @@
 		"wrangler": "^4.22.0"
 	},
 	"dependencies": {
-		"firebase": "^11.10.0"
+		"firebase": "^11.10.0",
+		"tone": "^15.1.22"
 	}
 }

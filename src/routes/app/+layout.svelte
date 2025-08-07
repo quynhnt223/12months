@@ -1,11 +1,13 @@
 <script>
+  import LogOut from "$lib/comp/LogOut.svelte";
+
   let { children } = $props();
   let data = $state([]);
 </script>
 
 {@render children()}
 <div class="surface">
-  <header><div class="header"></div></header>
+  <header><div class="header"><LogOut></LogOut></div></header>
   <div class="main-body">
     <div class="item item1">
       <div class="title">DAILY ROUTINES</div>
@@ -44,6 +46,7 @@
     padding-bottom: 0;
   }
   .header {
+    position: relative;
     background: #fff;
     height: 60px;
     border-radius: 12px;
