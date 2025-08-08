@@ -8,12 +8,12 @@
   } from "firebase/auth";
   import { auth } from "$lib/config/firebase.js";
 
-  let email = "";
-  let password = "";
-  let isLogin = true;
-  let loading = false;
-  let error = "";
-  let showPassword = false;
+  let email = $state("");
+  let password = $state("");
+  let isLogin = $state(true);
+  let loading = $state(false);
+  let error = $state("");
+  let showPassword = $state(false);
 
   function togglePassword() {
     showPassword = !showPassword;
@@ -40,10 +40,7 @@
         );
       }
 
-      // store the Firebase UID in localStorage
       localStorage.setItem("userId", credential.user.uid);
-
-      // then navigate
       goto("/app");
     } catch (err) {
       console.error("Auth error:", err);
@@ -56,7 +53,6 @@
 
 <div class="outer-container">
   <div class="logo-wrapper">
-    <!-- Back arrow button -->
     <a class="back-btn" href="/" aria-label="Go back" data-sound="1">
       <Icon name="back" color="#000" />
     </a>
@@ -65,25 +61,31 @@
 
   <div class="card-container {!isLogin ? 'signup-mode' : ''}">
     <div class="tabs-wrapper">
-      <div class=" tabs-pill">
+      <div class="tabs-pill">
         <button
           data-sound="1"
           class="tab-btn {isLogin ? 'active' : ''}"
-          on:click={() => (isLogin = true)}
+          onclick={() => (isLogin = true)}
         >
           Login
         </button>
         <button
           data-sound="1"
           class="tab-btn {!isLogin ? 'active' : ''}"
-          on:click={() => (isLogin = false)}
+          onclick={() => (isLogin = false)}
         >
           Sign up
         </button>
       </div>
     </div>
 
-    <form class="form" on:submit|preventDefault={handleEmailAuth}>
+    <form
+      class="form"
+      onsubmit={(e) => {
+        e.preventDefault();
+        handleEmailAuth();
+      }}
+    >
       {#if error}
         <div class="error-box">{error}</div>
       {/if}
@@ -91,7 +93,8 @@
       <div class="field">
         <input
           type="email"
-          bind:value={email}
+          value={email}
+          oninput={(e) => (email = e.target.value)}
           placeholder="Email"
           class="field-input"
           required
@@ -101,7 +104,8 @@
       <div class="field password-field">
         <input
           type={showPassword ? "text" : "password"}
-          bind:value={password}
+          value={password}
+          oninput={(e) => (password = e.target.value)}
           placeholder="Password"
           class="field-input"
           required
@@ -109,8 +113,8 @@
         <button
           type="button"
           data-sound="1"
-          class=" eye-btn"
-          on:click={togglePassword}
+          class="eye-btn"
+          onclick={togglePassword}
           aria-label="Toggle password visibility"
         >
           {#if showPassword}
@@ -122,7 +126,12 @@
       </div>
 
       <div class="submit-wrapper">
-        <button type="submit" class="submit-btn" disabled={loading}>
+        <button
+          data-sound="1"
+          type="submit"
+          class="submit-btn"
+          disabled={loading}
+        >
           {#if loading}
             <span class="spinner"></span>
           {/if}

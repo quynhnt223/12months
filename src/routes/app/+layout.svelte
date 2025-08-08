@@ -1,16 +1,18 @@
 <script>
   import LogOut from "$lib/comp/LogOut.svelte";
-
+  import { states } from "$lib/states.svelte.js";
   let { children } = $props();
   let data = $state([]);
 </script>
 
 {@render children()}
 <div class="surface">
-  <header><div class="header"><LogOut></LogOut></div></header>
+  <header>
+    <div class="header">{states.userId}swdws<LogOut></LogOut></div>
+  </header>
   <div class="main-body">
     <div class="item item1">
-      <div class="title">DAILY ROUTINES</div>
+      <div class="title">DAILY ROUTINES2</div>
       <div class="body"></div>
     </div>
     <div class="item item2">
