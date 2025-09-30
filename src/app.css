@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 :root {
-  --gray: #2e4e65ff;
-  --gray2: #54738fff;
-  --greenbg: #34eb71;
+  --dblue: #1d496c;
+  --lblue: #7795c9;
+  --lgreen: #34eb71;
+  --dgreen: #34eb71;
+  --bg: #f9ebdf;
   --shadow1: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 body,
@@ -10,7 +13,15 @@ html {
   width: 100%;
   padding: 0;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Barlow", sans-serif;
+}
+button {
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 /* Reset and Normalize */
 * {
@@ -18,4 +29,79 @@ html {
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+}
+.cwrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.cbody {
+  height: calc(100% - 36px);
+  padding: 12px;
+  padding-top: 2px;
+}
+.cheader {
+  height: 36px;
+  display: flex;
+  padding-left: 12px;
+  padding-right: 12px;
+  align-items: center;
+  padding-top: 6px;
+}
+.cheader .title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #9df30e;
+  padding-right: 10px;
+}
+.cheader .mt {
+  background: linear-gradient(90deg, #777a82 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.cheader .rt {
+  color: #e64555;
+}
+.cheader svg {
+  height: 16px;
+  width: 16px;
+}
+.cheader .nav {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.cheader .nav a {
+  height: 28px;
+  width: 28px;
+  border-radius: 6px;
+  display: grid;
+  place-content: center;
+  position: relative;
+}
+.nav a:hover {
+  background: #8de57dff;
+}
+.mn a:hover {
+  background: rgb(125, 141, 229);
+}
+.rn a:hover {
+  background: rgb(229, 125, 125);
+}
+.nav .label {
+  position: absolute;
+  background: #1d496c;
+  bottom: -36px;
+  left: 0;
+  font-size: 12px;
+  color: var(--bg);
+  font-weight: 600;
+  padding: 8px;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  z-index: 9;
+}
+.test {
+  padding: 20px;
 }

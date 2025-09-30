@@ -1,10 +1,10 @@
 {
-	"name": "dayscore",
+	"name": "12months",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "git add . && git commit -m \"auto push\" && git push origin master && vite dev",
 		"build": "vite build",
 		"preview": "npm run build && wrangler pages dev",
 		"prepare": "svelte-kit sync || echo ''",
@@ -12,6 +12,7 @@
 		"deploy:preview": "npm run build && wrangler pages deploy --branch preview"
 	},
 	"devDependencies": {
+		"@svelte-put/movable": "^4.0.0",
 		"@sveltejs/adapter-auto": "^6.0.0",
 		"@sveltejs/adapter-cloudflare": "^7.0.4",
 		"@sveltejs/kit": "^2.16.0",
@@ -22,7 +23,9 @@
 		"wrangler": "^4.22.0"
 	},
 	"dependencies": {
+		"dexie": "^4.0.11",
 		"firebase": "^11.10.0",
-		"tone": "^15.1.22"
+		"svelte-dnd-action": "^0.9.65"
 	}
+       
 }
