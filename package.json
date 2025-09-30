@@ -4,7 +4,8 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "git add . && git commit -m \"auto push\" && git push origin master && vite dev",
+		"dev": "vite dev",
+      "git":"git add . && git commit -m \"auto push\" && git push origin master ",
 		"build": "vite build",
 		"preview": "npm run build && wrangler pages dev",
 		"prepare": "svelte-kit sync || echo ''",
