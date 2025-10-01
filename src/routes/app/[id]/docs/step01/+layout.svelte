@@ -30,7 +30,7 @@
     z-index: 999;
     width: 568px;
     height: calc(100% - 45px);
-    right: 200px;
+    right: 255px;
     top: 12px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background: #272630;

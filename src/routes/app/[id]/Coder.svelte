@@ -171,15 +171,22 @@
       onblur={saveOnBlur}
     />
     <button onclick={() => (isEditMode = !isEditMode)}
-      ><Icon name="lock" size="14" color={isEditMode ? "yellow" : "#000"}
+      ><Icon
+        name="lock"
+        size="14"
+        color={isEditMode ? "var(--code-active)" : "#585D6B"}
       ></Icon></button
     >
     <button onclick={toggleAllFields}
-      ><Icon name="toggle" size="14" color={isToggle ? "yellow" : "#000"}
+      ><Icon
+        name="toggle"
+        size="14"
+        color={isToggle ? "var(--code-active)" : "#585D6B"}
       ></Icon></button
     >
-    <button onclick={addField}><Icon name="plus" size="16"></Icon></button>
-    <button onclick={cleanDoc}>reset doc</button>
+    <button onclick={addField}
+      ><Icon name="plus" size="16" color="#585D6B"></Icon></button
+    >
   </div>
   <div
     class="doc-body"
@@ -193,7 +200,12 @@
     {#each doc.mainData.fields as field, i (field.id)}
       <div class="editor-wrap">
         <div class="code-header">
-          <span class="header-num">{i + 1}</span>
+          <button
+            onclick={() => toggleField(i)}
+            class="header-num"
+            style="color: {field.visible ? 'var(--code-active)' : '#585D6B'}"
+            >{i + 1}</button
+          >
           <input
             type="text"
             class="field-title"
@@ -202,16 +214,14 @@
             onblur={saveOnBlur}
           />
           <div class="btns">
-            <button onclick={() => toggleField(i)}>
-              <Icon
-                name="eye"
-                size="14"
-                color={field.visible ? "yellow" : "#000"}
-              ></Icon>
-            </button>
             {#if isEditMode}
-              <button onclick={() => addComment(i)}>➕</button>
-              <button onclick={() => removeField(i)}>❌</button>
+              <button onclick={() => addComment(i)}
+                ><Icon name="addcomment" size="16" color="#585D6B"
+                ></Icon></button
+              >
+              <button onclick={() => removeField(i)}
+                ><Icon name="bin" size="16" color="#585D6B"></Icon></button
+              >
             {/if}
           </div>
         </div>
@@ -227,9 +237,7 @@
             <div class="comments">
               {#each field.comments as comment, i}
                 <button
-                  class="comment-btn"
-                  class:comment-active={isCommentOpen &&
-                    currentCommentIndex === i}
+                  class="comment-btn sound1"
                   onclick={() => {
                     isCommentOpen = true;
                     currentComment = comment;
@@ -240,7 +248,14 @@
                         commentEditor.innerHTML = comment.content ?? "";
                       }
                     });
-                  }}>{i + 1}</button
+                  }}
+                  ><Icon
+                    name="comment"
+                    size="18"
+                    color={isCommentOpen && currentCommentIndex === i
+                      ? "var(--code-active)"
+                      : "#585D6B"}
+                  ></Icon></button
                 >
               {/each}
             </div>
@@ -248,7 +263,6 @@
         {/if}
       </div>
     {/each}
-    <div style="color:#ddd">{JSON.stringify(doc)}</div>
   </div>
   {#if isCommentOpen}
     <div class="comment-box move" use:clickOutside={closeModal}>
@@ -291,13 +305,16 @@
     bottom: 0;
     width: 668px;
     background: #272630;
-    z-index: 99999;
+    z-index: 2;
+    border-right: solid 1px #9f9f9f;
+    box-shadow: rgb(0 0 0 / 69%) 1px 1px 2px;
   }
   .editor-wrap {
     position: relative;
     display: flex;
     flex-direction: column;
-    z-index: 9999999;
+    z-index: 9;
+    padding-left: 20px;
   }
   .editor {
     flex: 1;
@@ -348,38 +365,39 @@
     align-items: center;
   }
   .btns button {
-    width: 24px;
-    height: 24px;
-    margin-left: 8px;
-    border-radius: 2px;
-    display: grid;
-    place-content: center;
-    background: #42414b;
+    margin-right: 6px;
+    padding-left: 3px;
+    padding-top: 2px;
   }
   .doc-header {
     display: flex;
     align-items: center;
+    padding-right: 6px;
   }
   .doc-header input {
     flex: 1;
     background: none;
+    font-weight: 800;
+    font-size: 18px;
     outline: none;
     border: none;
     padding: 12px;
-    padding-left: 12px;
-    color: #858585;
+    padding-left: 20px;
+    color: var(--dark-icon);
+    font-family: "JetBrains Mono", "Fira Code", Consolas, "Courier New",
+      monospace, Consolas, "Courier New", monospace;
+    text-transform: capitalize;
   }
   .doc-header button {
-    height: 24px;
-    width: 24px;
     display: grid;
+    padding-left: 3px;
+    padding-top: 2px;
     place-content: center;
-    border-radius: 3px;
-    background: #42414b;
     margin-right: 6px;
   }
   .doc-body {
     padding: 20px;
+    padding-left: 0;
     padding-right: 6px;
     flex: 1;
     height: calc(100% - 24px);
@@ -389,32 +407,32 @@
   * {
     scrollbar-width: none; /* hides scrollbar */
   }
-  .header-num {
-    width: 18px;
-    height: 18px;
+  .header-num,
+  .doc-header button,
+  .btns button {
+    width: 28px;
+    height: 28px;
     border-radius: 6px;
-    background: #3d3da4;
+    padding-right: 3px;
+    padding-bottom: 2px;
     display: grid;
     place-content: center;
-    font-weight: 600;
-    font-size: 12px;
+    font-weight: 800;
+    font-size: 16px;
+    background: #353441;
+    color: #12f042;
     box-shadow:
-      rgb(28, 27, 27) 0px 1px 1px,
-      rgb(0, 0, 0) 0px 1px 2px;
+      inset -1px -1px 1px rgba(0, 0, 0, 0.61),
+      inset 1px 1px 1px rgba(131, 84, 84, 0.25);
+    border-radius: 9px;
   }
   .comment-btn {
     width: 36px;
-    height: 21px;
+    height: 36px;
     border-radius: 6px;
-    background: #3d3d3d;
     display: grid;
     place-content: center;
-    font-size: 12px;
-    font-weight: 600;
-    color: #81818a;
-    box-shadow:
-      0px 2px 1px #121115,
-      inset 0px 2px 2px #383;
+    background: none;
   }
   .comments {
     position: absolute;
@@ -435,8 +453,8 @@
     background: #413f4b;
     border-radius: 12px;
     position: absolute;
-    right: 36px;
-    top: 68px;
+    right: 68px;
+    top: 136px;
     z-index: 9999;
     box-shadow:
       rgba(0, 0, 0, 0.3) 0px 19px 38px,
@@ -453,7 +471,7 @@
     padding: 15px;
     padding-left: 20px;
     flex: 1;
-    color: #b7dd11;
+    color: var(--code-active);
     font-weight: 400;
     font-family: "Barlow", sans-serif;
     font-size: 18px;
@@ -472,15 +490,36 @@
     padding-top: 0;
   }
   :global(.comment-editor b) {
-    background: #202138;
-    font-family: "courier";
-    padding-left: 8px;
-    padding-right: 6px;
-    font-size: 14px;
-    border-radius: 3px;
+    color: var(--code-active);
+    border-radius: 6px;
     text-align: center;
     margin-left: 6px;
     margin-right: 6px;
+    font-weight: 400;
+  }
+  :global(.comment-editor i) {
+    color: #818181;
+    margin-left: 6px;
+    margin-right: 6px;
+    font-style: normal;
+    border-bottom: dotted 1px #818181;
+  }
+  :global(.comment-editor u) {
+    font-size: 10px;
+    line-height: 21px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 8px;
+    width: 21px;
+    height: 21px;
+    position: relative;
+    top: -1.5px;
+    margin-right: 6px;
+    background: #353441;
+    color: var(--code-active);
+    box-shadow:
+      inset -1px -1px 1px rgba(0, 0, 0, 0.61),
+      inset 1px 1px 1px rgba(131, 84, 84, 0.25);
   }
   :global(.editor-edit i) {
     background: #6a6887 !important;
@@ -516,9 +555,7 @@
     outline: none;
     border: none;
   }
-  .comment-active {
-    background: #000;
-  }
+
   :global(#dnd-action-dragged-el) {
     position: relative;
     outline: none !important;

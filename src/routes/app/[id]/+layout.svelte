@@ -13,7 +13,7 @@
     { id: "05", name: "🗃️ data", link: "data" },
     { id: "06", name: "⚙️ Svelte 5", link: "water" },
     { id: "07", name: "♨️ Javascript", link: "water" },
-    { id: "08", name: "🚨 Bugs", link: "water" },
+    { id: "08", name: "🚨 Bugs", link: "bugs" },
     { id: "09", name: "💧 water", link: "water" },
     { id: "10", name: "🥑 nutrition", link: "nutrition" },
     { id: "11", name: "🥑 nutrition", link: "nutrition" },
@@ -64,7 +64,7 @@
 <svelte:head>
   <style>
     body {
-      background: #fff;
+      background: #ececec;
     }
   </style>
 </svelte:head>
@@ -74,7 +74,7 @@
 <div class="wrap">
   {#each apps as app}
     <a
-      href="/app/290925/{app.link}/step1"
+      href="/app/290925/{app.link}/step01"
       class="openFloatingCard sound1"
       onclick={() => (states.isFloatingCard = true)}
       ><div class="header">
@@ -86,9 +86,9 @@
 
 <style>
   :root {
-    --c1: #ecfe89;
-    --c2: #9cffbd;
-    --c3: #d9d9f6;
+    --c3: #b3f02d;
+    --c1: #9d94f4;
+    --c2: #34e569;
     --c4: #d1ff17;
     --c5: #d1ff17;
     --c6: #d1ff17;
@@ -102,9 +102,9 @@
     left: 400px;
     right: 36px;
     display: grid;
-    gap: 3px;
+    gap: 12px;
     grid-template-columns: repeat(8, 1fr); /* 7 equal-width columns */
-    grid-auto-rows: 100px; /* Row height */
+    grid-auto-rows: 86px; /* Row height */
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
@@ -125,7 +125,7 @@
     text-transform: capitalize;
     border-radius: 8px;
     background: #fff;
-    box-shadow: var(--sd1);
+    box-shadow: var(--shadow-lg);
   }
   .openFloatingCard:nth-child(-n + 16) {
     background: var(--c1);
@@ -135,9 +135,5 @@
   }
   .openFloatingCard:nth-child(n + 33):nth-child(-n + 48) {
     background: var(--c3);
-    box-shadow: var(--sd2);
-  }
-  a:hover {
-    opacity: 0.8;
   }
 </style>
