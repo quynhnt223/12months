@@ -1,4 +1,5 @@
 <script>
+  import { nanoid } from "nanoid";
   import Icon from "$lib/Icon.svelte";
   import { dndzone, SHADOW_ITEM_MARKER_PROPERTY_NAME } from "svelte-dnd-action";
 
@@ -10,7 +11,7 @@
         day01: {
           title: "hello",
           items: [
-            { id: 1, name: "We love Life Man!" },
+            { id: nanoid(8), name: "We love Life Man!" },
             { id: 2, name: "Ok, I got You Bruh" },
             { id: 3, name: "item3" },
             { id: 4, name: "item4" },
@@ -51,7 +52,7 @@
         </div>
       {/each}
     </section>
-    <div class="data"></div>
+    <div class="data">{JSON.stringify(doc)}</div>
   </div>
 </div>
 

@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-      "git":"git add . && git commit -m \"auto push\" && git push origin master ",
+		"git": "git add . && git commit -m \"auto push\" && git push origin master ",
 		"build": "vite build",
 		"preview": "npm run build && wrangler pages dev",
 		"prepare": "svelte-kit sync || echo ''",
@@ -26,7 +26,7 @@
 	"dependencies": {
 		"dexie": "^4.0.11",
 		"firebase": "^11.10.0",
+		"nanoid": "^5.1.6",
 		"svelte-dnd-action": "^0.9.65"
 	}
-       
 }

@@ -1,9 +1,7 @@
 <script>
-  // ────────────────────────────────
-  // Imports
-  // ────────────────────────────────
+  import { nanoid } from "nanoid";
   import { page } from "$app/state";
-  import { dndzone } from "svelte-dnd-action";
+  import { dndzone, SHADOW_ITEM_MARKER_PROPERTY_NAME } from "svelte-dnd-action";
   import { tick } from "svelte";
   import { fade } from "svelte/transition";
   import { dm } from "$lib/data/sync6.js";
@@ -14,32 +12,27 @@
   // ────────────────────────────────
   // Utils
   // ────────────────────────────────
-  function genId() {
-    return `field-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-  }
 
   function defaultDoc() {
     return {
       title: "Step...",
       fields: [
         {
-          id: genId(),
+          id: nanoid(8),
           title: "...",
           html: "",
           visible: true,
           comments: [
-            { id: genId(), title: "Note 1", content: "Remember to drink 2L" },
-            { id: genId(), title: "Note 2", content: "Check on step2 layout" },
+            { id: nanoid(8), title: "Note 1", content: "Remember to drink 2L" },
+            {
+              id: nanoid(8),
+              title: "Note 2",
+              content: "Check on step2 layout",
+            },
           ],
         },
       ],
     };
-  }
-
-  function cleanDoc() {
-    doc = { mainData: defaultDoc() };
-    dm.saveData(docId, doc);
-    alert("saved");
   }
 
   // ────────────────────────────────
@@ -96,7 +89,7 @@
   // ────────────────────────────────
   function addField() {
     doc.mainData.fields.push({
-      id: genId(),
+      id: nanoid(8),
       title: "",
       html: "",
       visible: true,
@@ -127,7 +120,7 @@
   // ────────────────────────────────
   function addComment(fieldIndex) {
     doc.mainData.fields[fieldIndex].comments.push({
-      id: genId(),
+      id: nanoid(8),
       title: "New Comment",
       content: "",
     });
@@ -151,13 +144,14 @@
 
   // ────────────────────────────────
   // Drag & Drop
-  // ────────────────────────────────
   function handleDndConsider(e) {
     doc.mainData.fields = e.detail.items;
   }
 
   function handleDndFinalize(e) {
+    // Restore original visibility states
     doc.mainData.fields = e.detail.items;
+    dm.saveData(docId, doc);
   }
 </script>
 
@@ -199,7 +193,13 @@
   >
     {#each doc.mainData.fields as field, i (field.id)}
       <div class="editor-wrap">
+        {#if field[SHADOW_ITEM_MARKER_PROPERTY_NAME]}
+          <div class="custom-shadow-item"></div>
+        {/if}
         <div class="code-header">
+          {#if isEditMode}
+            <div class="drag"><Icon name="drag" color="#57595E"></Icon></div>
+          {/if}
           <button
             onclick={() => toggleField(i)}
             class="header-num"
@@ -314,7 +314,16 @@
     display: flex;
     flex-direction: column;
     z-index: 9;
-    padding-left: 20px;
+    padding: 6px;
+    padding-left: 12px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+
+  :global(.editor-wrap#dnd-action-dragged-el) {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #32313e !important;
+    z-index: 99999999 !important;
   }
   .editor {
     flex: 1;
@@ -396,8 +405,7 @@
     margin-right: 6px;
   }
   .doc-body {
-    padding: 20px;
-    padding-left: 0;
+    padding: 8px;
     padding-right: 6px;
     flex: 1;
     height: calc(100% - 24px);
@@ -450,6 +458,8 @@
     min-width: 300px;
     max-width: 368px;
     min-height: 368px;
+    max-height: 500px;
+    overflow: auto;
     background: #413f4b;
     border-radius: 12px;
     position: absolute;
@@ -562,5 +572,22 @@
     border: none !important;
     box-shadow: none;
     z-index: 999999 !important;
+  }
+  .custom-shadow-item {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    visibility: visible;
+
+    border-radius: 8px;
+    z-index: 9999999999;
+    border: 1px dashed #828282;
+  }
+  .drag {
+    width: 45px;
+    height: 24px;
+    border-radius: 6px;
   }
 </style>
