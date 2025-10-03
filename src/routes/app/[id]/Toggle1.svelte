@@ -47,7 +47,7 @@
   }
   .t-editor {
     padding-top: 15px;
-    min-height: 100px;
+    min-height: 86px;
   }
   :global(.t-editor svg) {
     width: 100%;

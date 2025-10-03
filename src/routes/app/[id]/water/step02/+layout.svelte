@@ -1,7 +1,7 @@
 <script>
   // Step 2 → Render planned cups dynamically
   import { page } from "$app/state";
-  import { dm } from "$lib/data/sync6.js";
+  import { dm } from "$lib/data/sync6.svelte.js";
   import { states } from "$lib/states.svelte.js";
 
   let { children } = $props();

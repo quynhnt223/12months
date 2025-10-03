@@ -1,4 +1,4 @@
-import { dm } from "$lib/data/sync6.js";
+import { dm } from "$lib/data/sync6.svelte.js";
 class Logic {
   add() {}
 }

@@ -9,17 +9,17 @@
 <Coder></Coder>
 <Sidebar4
   steps1={[
-    "Color",
-    "Shadow",
+    "Light",
+    "Dark",
+    "Playful",
     "Text",
+    "Shadow",
     "Button",
     "Title",
     "Pop up",
     "Toggle",
     "Slider",
     "Visual",
-    "10",
-    "11",
   ]}
   steps2={[
     "Card",

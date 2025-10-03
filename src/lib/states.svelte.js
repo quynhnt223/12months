@@ -5,6 +5,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { browser } from "$app/environment";
 
 class States {
+  isSaved = $state(false);
   toggle1 = $state(false);
   isFloatingCard = $state(false);
   isFading = $state(false);

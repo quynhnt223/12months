@@ -1,6 +1,6 @@
 <script>
   import { page } from "$app/state";
-  import { dm } from "$lib/data/sync6.js";
+  import { dm } from "$lib/data/sync6.svelte.js";
   import { lg } from "./logic.svelte.js";
 
   let doc = $state({ id: null, mainData: {}, additionalField: "add later" });

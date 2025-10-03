@@ -3,8 +3,10 @@ import { dbd } from "$lib/data/dexie.js";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 
 class Dm {
+  status = $state("white");
   // be careful. don't use async as it will block return unsub
   async loadData(docId, docObject) {
+    this.status = "white";
     this.loadFromLocal(docId, docObject);
 
     try {
@@ -13,12 +15,15 @@ class Dm {
 
       if (docSnap.exists()) {
         docObject.mainData = docSnap.data().mainData; // ✅ normalize recursively
+        this.status = "green";
         console.log("✓ Data loaded from Firestore", docId);
       } else {
+        this.status = "purple";
         console.log("ℹ No Firestore document found for", docId);
       }
     } catch (error) {
       console.log("Error loading document:", error);
+      this.status = "red";
     }
   }
 
@@ -32,14 +37,17 @@ class Dm {
         console.log("ℹ No local data found for", docId);
       }
     } catch (error) {
+      this.status = "red";
       console.log(error);
     }
   }
 
-  saveData(docId, docObject) {
+  async saveData(docId, docObject) {
+    this.status = "white";
     // Fire-and-forget for local save
     this.saveToLocal(docId, docObject).catch((error) => {
       console.error("Local save failed:", error);
+      this.status = "red";
     });
 
     // Fire-and-forget to Firestore with confirmation
@@ -47,10 +55,12 @@ class Dm {
       merge: true,
     })
       .then(() => {
+        this.status = "green";
         console.log("✓ Data synced to cloud successfully");
         // Could update a sync status indicator in UI
       })
       .catch((error) => {
+        this.status = "red";
         console.log("✗ Firestore sync failed:", error);
         // Could show "sync failed" indicator
       });
@@ -66,6 +76,7 @@ class Dm {
       });
     } catch (error) {
       console.log("Error saving to local database:", error);
+      this.status = "red";
     }
   }
 }

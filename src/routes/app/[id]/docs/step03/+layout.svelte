@@ -2,7 +2,7 @@
   import { page } from "$app/state";
   import { tick } from "svelte";
   import { fade } from "svelte/transition";
-  import { dm } from "$lib/data/sync6.js";
+  import { dm } from "$lib/data/sync6.svelte.js";
   import { states } from "$lib/states.svelte.js";
   import { clickOutside } from "$lib/utils/clickOutside.js";
   import Icon from "$lib/Icon.svelte";

@@ -2,7 +2,7 @@
   import { page } from "$app/state";
   import { nanoid } from "nanoid";
   import { dndzone, SHADOW_ITEM_MARKER_PROPERTY_NAME } from "svelte-dnd-action";
-  import { dm } from "$lib/data/sync6.js";
+  import { dm } from "$lib/data/sync6.svelte.js";
   import { states } from "$lib/states.svelte.js";
   import Icon from "$lib/Icon.svelte";
   import Wrapper1 from "../../Wrapper1.svelte";

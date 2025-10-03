@@ -4,7 +4,7 @@
   import { dndzone, SHADOW_ITEM_MARKER_PROPERTY_NAME } from "svelte-dnd-action";
   import { tick } from "svelte";
   import { fade } from "svelte/transition";
-  import { dm } from "$lib/data/sync6.js";
+  import { dm } from "$lib/data/sync6.svelte.js";
   import { states } from "$lib/states.svelte.js";
   import { clickOutside } from "$lib/utils/clickOutside.js";
   import Icon from "$lib/Icon.svelte";
@@ -164,6 +164,9 @@
       bind:value={doc.mainData.title}
       onblur={saveOnBlur}
     />
+    <div class="sync">
+      <div class={dm.status}><Icon name="save"></Icon></div>
+    </div>
     <button onclick={() => (isEditMode = !isEditMode)}
       ><Icon
         name="lock"
@@ -384,7 +387,6 @@
     padding-right: 6px;
   }
   .doc-header input {
-    flex: 1;
     background: none;
     font-weight: 800;
     font-size: 18px;
@@ -589,5 +591,26 @@
     width: 45px;
     height: 24px;
     border-radius: 6px;
+  }
+  .sync {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  .sync div {
+    display: flex;
+    align-items: center;
+  }
+  :global(.white svg) {
+    fill: #fff;
+  }
+  :global(.green svg) {
+    fill: var(--green1);
+  }
+  :global(.red svg) {
+    fill: red;
+  }
+  :global(.purple svg) {
+    fill: #6a6ee5;
   }
 </style>
