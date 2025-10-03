@@ -15,7 +15,7 @@
     </div>
   </header>
   <div class="body">
-    {@render body()}
+    {@render body?.()}
   </div>
 </div>
 

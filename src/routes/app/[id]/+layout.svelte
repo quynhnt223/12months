@@ -12,7 +12,7 @@
     { id: "04", name: "📓 docs", link: "docs" },
     { id: "05", name: "🗃️ data", link: "data" },
     { id: "06", name: "⚙️ Svelte 5", link: "water" },
-    { id: "07", name: "♨️ Javascript", link: "water" },
+    { id: "07", name: "📗 Lessons", link: "lessons" },
     { id: "08", name: "🚨 Bugs", link: "bugs" },
     { id: "09", name: "💧 water", link: "water" },
     { id: "10", name: "🥑 nutrition", link: "nutrition" },
