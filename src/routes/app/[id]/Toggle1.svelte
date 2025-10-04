@@ -1,18 +1,18 @@
 <script>
   import { fade } from "svelte/transition";
   import { states } from "$lib/states.svelte.js";
-  let { t = "title...", c = "green", content } = $props();
-
-  let toggle = $state(false);
+  let { t = "title...", c = "green", content, toggle = false } = $props();
 
   $effect(() => {
-    toggle = states.toggle1;
+    if (states.toggle1 != null) {
+      toggle = states.toggle1;
+    }
   });
 </script>
 
 <div class="t-wrap">
   <header class="t-hd">
-    <button onclick={() => (toggle = !toggle)} class={c}>{t}</button>
+    <button onclick={() => (toggle = !toggle)} class="{c} sound1">{t}</button>
   </header>
   {#if toggle}
     <section class="t-body" transition:fade={{ duration: 300 }}>
@@ -37,7 +37,7 @@
     background: var(--green1);
     box-shadow: var(--shadow-sm);
     padding: 8px 18px;
-    color: #203e1d;
+    color: #001503;
     text-transform: capitalize;
   }
   :global(.red1) {

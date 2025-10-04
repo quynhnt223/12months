@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 import {
   initializeFirestore,
   persistentLocalCache,
-  persistentSingleTabManager
+  persistentSingleTabManager,
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -24,6 +24,6 @@ export const auth = getAuth(app);
 
 export const dbf = initializeFirestore(app, {
   localCache: persistentLocalCache({
-    tabManager: persistentSingleTabManager()
+    tabManager: persistentSingleTabManager(),
   }),
 });

@@ -68,7 +68,7 @@
     font: inherit;
     background-color: #19f081;
     border: 0;
-    color: #203e1d;
+    color: #001503;
     border-radius: 10px;
     font-size: 15px;
     padding: 10px;
@@ -120,5 +120,8 @@
     display: grid;
     place-content: center;
     box-shadow: var(--shadow-lg);
+  }
+  a {
+    -webkit-user-drag: none;
   }
 </style>

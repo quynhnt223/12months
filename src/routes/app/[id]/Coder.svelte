@@ -349,6 +349,7 @@
   }
   :global(.editor-edit div) {
     background: #272630 !important;
+    white-space: normal;
   }
   .field-title {
     flex: 1;
@@ -388,6 +389,7 @@
   }
   .doc-header input {
     background: none;
+    flex: 1;
     font-weight: 800;
     font-size: 18px;
     outline: none;
@@ -593,9 +595,9 @@
     border-radius: 6px;
   }
   .sync {
-    flex: 1;
     display: flex;
     align-items: center;
+    margin-right: 36px;
   }
   .sync div {
     display: flex;

@@ -13,8 +13,13 @@
     <div class="btns2">
       <button
         class="bt3 sound1"
-        onclick={() => (states.toggle1 = !states.toggle1)}
-        ><Icon name="toggle" size="21"></Icon></button
+        onclick={() => {
+          if (states.toggle1 === null) {
+            states.toggle1 = true;
+          } else {
+            states.toggle1 = !states.toggle1;
+          }
+        }}><Icon name="toggle" size="21"></Icon></button
       >
     </div>
   </header>

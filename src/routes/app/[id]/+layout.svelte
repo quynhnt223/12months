@@ -8,10 +8,10 @@
   let apps = $state([
     { id: "01", name: "🎨 Design", link: "design" },
     { id: "02", name: "🎴 Svelte DnD", link: "sveltednd" },
-    { id: "03", name: "fitness", link: "water" },
+    { id: "03", name: "🗓️ 12months", link: "12months" },
     { id: "04", name: "📓 docs", link: "docs" },
     { id: "05", name: "🗃️ data", link: "data" },
-    { id: "06", name: "⚙️ Svelte 5", link: "water" },
+    { id: "06", name: "⚙️ Svelte 5", link: "svelte5" },
     { id: "07", name: "📗 Lessons", link: "lessons" },
     { id: "08", name: "🚨 Bugs", link: "bugs" },
     { id: "09", name: "💧 water", link: "water" },
@@ -64,7 +64,7 @@
 <svelte:head>
   <style>
     body {
-      background: #ececec;
+      background: #19f081;
     }
   </style>
 </svelte:head>
@@ -102,7 +102,7 @@
     left: 400px;
     right: 36px;
     display: grid;
-    gap: 12px;
+    gap: 6px;
     grid-template-columns: repeat(8, 1fr); /* 7 equal-width columns */
     grid-auto-rows: 86px; /* Row height */
     -webkit-user-select: none; /* Safari */
@@ -115,6 +115,8 @@
     padding-left: 8px;
     display: flex;
     align-items: center;
+    font-weight: 600;
+    color: #203e1d;
   }
 
   .openFloatingCard {
@@ -123,17 +125,8 @@
     justify-content: space-between;
     color: #000;
     text-transform: capitalize;
-    border-radius: 8px;
+    border-radius: 6px;
     background: #fff;
-    box-shadow: var(--shadow-lg);
-  }
-  .openFloatingCard:nth-child(-n + 16) {
-    background: var(--c1);
-  }
-  .openFloatingCard:nth-child(n + 17):nth-child(-n + 32) {
-    background: var(--c2);
-  }
-  .openFloatingCard:nth-child(n + 33):nth-child(-n + 48) {
-    background: var(--c3);
+    box-shadow: var(--shadow-sm);
   }
 </style>

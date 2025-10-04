@@ -25,10 +25,10 @@
       <a
         href="step{n}"
         class="btn1 sound1 bug"
-        class:l-active={`g${n}` === page.route.id.slice(-3)}
+        class:l-active={`p${n}` === page.route.id.slice(-3)}
       >
         0{n}
-        {#if `g${n}` === page.route.id.slice(-3)}
+        {#if `p${n}` === page.route.id.slice(-3)}
           <div class="dot"></div>
         {/if}
       </a>
@@ -120,5 +120,8 @@
     display: grid;
     place-content: center;
     box-shadow: var(--shadow-lg);
+  }
+  a {
+    -webkit-user-drag: none;
   }
 </style>

@@ -6,7 +6,7 @@ import { browser } from "$app/environment";
 
 class States {
   isSaved = $state(false);
-  toggle1 = $state(false);
+  toggle1 = $state(null);
   isFloatingCard = $state(false);
   isFading = $state(false);
   isSoundOn = $state(true);

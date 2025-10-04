@@ -62,6 +62,10 @@ button {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  user-select: none;
+}
+a {
+  user-select: none;
 }
 /* Reset and Normalize */
 * {

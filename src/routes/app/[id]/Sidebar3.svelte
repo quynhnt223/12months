@@ -121,4 +121,7 @@
     place-content: center;
     box-shadow: var(--shadow-lg);
   }
+  a {
+    -webkit-user-drag: none;
+  }
 </style>
