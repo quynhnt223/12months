@@ -12,169 +12,337 @@
       name: "Design",
       link: "design",
       icon: "colors",
-      color: "#8C6FF0",
+      color: "#19f081",
     },
     {
       id: "02",
       name: "Svelte DnD",
       link: "sveltednd",
       icon: "stacks",
-      color: "#FF5C38",
+      color: "#19f081",
     },
     {
       id: "03",
       name: "12months",
       link: "12months",
       icon: "folder_data",
-      color: "#2D9CDB",
+      color: "#19f081",
     },
-    { id: "04", name: "docs", link: "docs", icon: "book", color: "#5C6BC0" },
+    {
+      id: "04",
+      name: "docs",
+      link: "docs",
+      icon: "book",
+      color: "#19f081",
+    },
     {
       id: "05",
       name: "data",
       link: "data",
       icon: "database",
-      color: "#26A69A",
+      color: "#19f081",
     },
     {
       id: "06",
       name: "Svelte 5",
       link: "svelte5",
       icon: "settings",
-      color: "#F9A825",
+      color: "#19f081",
     },
     {
       id: "07",
       name: "Lessons",
       link: "lessons",
       icon: "add_notes",
-      color: "#AB47BC",
+      color: "#19f081",
     },
-    { id: "08", name: "Bugs", link: "bugs", icon: "adb", color: "#E53935" },
+    {
+      id: "08",
+      name: "Bugs",
+      link: "bugs",
+      icon: "adb",
+      color: "#19f081",
+    },
     {
       id: "09",
       name: "water",
       link: "water",
       icon: "water_do",
-      color: "#42A5F5",
+      color: "#7240e6",
     },
     {
       id: "10",
       name: "nutrition",
       link: "nutrition",
       icon: "skillet",
-      color: "#66BB6A",
+      color: "#7240e6",
     },
     {
       id: "11",
       name: "fitness",
       link: "nutrition",
       icon: "body_system",
-      color: "#F57C00",
+      color: "#7240e6",
     },
-    { id: "12", name: "sleep", link: "water", icon: "bed", color: "#3949AB" },
+    {
+      id: "12",
+      name: "sleep",
+      link: "water",
+      icon: "bed",
+      color: "#7240e6",
+    },
     {
       id: "13",
       name: "enviroment",
       link: "water",
       icon: "other_houses",
-      color: "#43A047",
+      color: "#7240e6",
     },
     {
       id: "14",
       name: "clothes",
       link: "water",
       icon: "laundry",
-      color: "#9C27B0",
+      color: "#7240e6",
     },
     {
       id: "15",
       name: "money",
       link: "water",
       icon: "money_bag",
-      color: "#4CAF50",
+      color: "#7240e6",
     },
     {
       id: "16",
       name: "morning",
       link: "water",
       icon: "sunny",
-      color: "#FFC107",
+      color: "#7240e6",
     },
     {
       id: "17",
       name: "evening",
       link: "water",
       icon: "scene",
-      color: "#7E57C2",
+      color: "#7240e6",
     },
     {
       id: "18",
       name: "work 1",
       link: "nutrition",
       icon: "timer",
-      color: "#2196F3",
+      color: "#7240e6",
     },
     {
       id: "19",
       name: "work 2",
       link: "water",
       icon: "timer",
-      color: "#00ACC1",
+      color: "#7240e6",
     },
     {
       id: "20",
       name: "work 3",
       link: "water",
       icon: "timer",
-      color: "#26C6DA",
+      color: "#7240e6",
     },
     {
       id: "21",
       name: "work 4",
       link: "water",
       icon: "timer",
-      color: "#29B6F6",
+      color: "#7240e6",
     },
     {
       id: "22",
       name: "work 5",
       link: "water",
       icon: "timer",
-      color: "#64B5F6",
+      color: "#7240e6",
     },
     {
       id: "23",
       name: "work 6",
       link: "water",
       icon: "timer",
-      color: "#81D4FA",
+      color: "#7240e6",
     },
-    { id: "24", name: "bwa0", link: "water", icon: "house", color: "#90A4AE" },
-    { id: "25", name: "bwa0", link: "water", icon: "house", color: "#B0BEC5" },
-    { id: "26", name: "bwa0", link: "water", icon: "house", color: "#CFD8DC" },
-    { id: "27", name: "bwa0", link: "water", icon: "house", color: "#B39DDB" },
-    { id: "28", name: "bwa0", link: "water", icon: "house", color: "#80CBC4" },
-    { id: "29", name: "bwa0", link: "water", icon: "house", color: "#AED581" },
-    { id: "30", name: "bwa0", link: "water", icon: "house", color: "#FFB74D" },
-    { id: "31", name: "bwa0", link: "water", icon: "house", color: "#4DB6AC" },
-    { id: "32", name: "bwa0", link: "water", icon: "house", color: "#BA68C8" },
-    { id: "33", name: "bwa0", link: "water", icon: "house", color: "#F06292" },
-    { id: "34", name: "bwa0", link: "water", icon: "house", color: "#7986CB" },
-    { id: "35", name: "bwa0", link: "water", icon: "house", color: "#26A69A" },
-    { id: "36", name: "bwa0", link: "water", icon: "house", color: "#FF8A65" },
-    { id: "37", name: "bwa0", link: "water", icon: "house", color: "#9575CD" },
-    { id: "38", name: "bwa0", link: "water", icon: "house", color: "#81C784" },
-    { id: "39", name: "bwa0", link: "water", icon: "house", color: "#4FC3F7" },
-    { id: "40", name: "bwa0", link: "water", icon: "house", color: "#F48FB1" },
-    { id: "41", name: "bwa0", link: "water", icon: "house", color: "#A1887F" },
-    { id: "42", name: "bwa0", link: "water", icon: "house", color: "#CE93D8" },
-    { id: "43", name: "bwa0", link: "water", icon: "house", color: "#90CAF9" },
-    { id: "44", name: "bwa0", link: "water", icon: "house", color: "#B3E5FC" },
-    { id: "45", name: "bwa0", link: "water", icon: "house", color: "#FFCC80" },
-    { id: "46", name: "bwa0", link: "water", icon: "house", color: "#C5E1A5" },
-    { id: "47", name: "bwa0", link: "water", icon: "house", color: "#80DEEA" },
-    { id: "48", name: "bwa0", link: "water", icon: "house", color: "#E1BEE7" },
+    {
+      id: "24",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#7240e6",
+    },
+    {
+      id: "25",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#7240e6",
+    },
+    {
+      id: "26",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#7240e6",
+    },
+    {
+      id: "27",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#7240e6",
+    },
+    {
+      id: "28",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#7240e6",
+    },
+    {
+      id: "29",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#7240e6",
+    },
+    {
+      id: "30",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#7240e6",
+    },
+    {
+      id: "31",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#7240e6",
+    },
+    {
+      id: "32",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#7240e6",
+    },
+    {
+      id: "33",
+      name: "Ego",
+      link: "water",
+      icon: "conversation",
+      color: "#c6d109",
+    },
+    {
+      id: "34",
+      name: "food",
+      link: "water",
+      icon: "no_food",
+      color: "#c6d109",
+    },
+    {
+      id: "35",
+      name: "Anger",
+      link: "water",
+      icon: "sentiment_extremely_dissatisfied",
+      color: "#c6d109",
+    },
+    {
+      id: "36",
+      name: "stress",
+      link: "water",
+      icon: "skull",
+      color: "#c6d109",
+    },
+    {
+      id: "37",
+      name: "Addiction",
+      link: "water",
+      icon: "pill",
+      color: "#c6d109",
+    },
+    {
+      id: "38",
+      name: "mess",
+      link: "water",
+      icon: "immunology",
+      color: "#c6d109",
+    },
+    {
+      id: "39",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#c6d109",
+    },
+    {
+      id: "40",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#c6d109",
+    },
+    {
+      id: "41",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#c6d109",
+    },
+    {
+      id: "42",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#c6d109",
+    },
+    {
+      id: "43",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#c6d109",
+    },
+    {
+      id: "44",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#c6d109",
+    },
+    {
+      id: "45",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#c6d109",
+    },
+    {
+      id: "46",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#c6d109",
+    },
+    {
+      id: "47",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#c6d109",
+    },
+    {
+      id: "48",
+      name: "bwa0",
+      link: "water",
+      icon: "house",
+      color: "#c6d109",
+    },
   ]);
 
   function close() {
@@ -185,13 +353,13 @@
 <svelte:head>
   <style>
     body {
-      background: #19f081;
+      background: #ececec;
     }
   </style>
 </svelte:head>
 
 {@render children()}
-
+<img class="logo" src="/logo.png" alt="img" />
 <div class="wrap">
   {#each apps as app}
     <a
@@ -207,7 +375,7 @@
         </div>
         <div>{app.name}</div>
         <div class="thumb">
-          <Speed value={50} color="#6c7fff"></Speed>
+          <Speed></Speed>
         </div>
       </div>
     </a>
@@ -232,7 +400,7 @@
     left: 400px;
     right: 36px;
     display: grid;
-    gap: 6px;
+    gap: 12px;
     grid-template-columns: repeat(8, 1fr); /* 7 equal-width columns */
     grid-auto-rows: 86px; /* Row height */
     -webkit-user-select: none; /* Safari */
@@ -250,9 +418,9 @@
     align-items: start;
     justify-content: space-between;
     font-weight: 600;
-    color: #203e1d;
+    color: #787978;
     position: relative;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .openFloatingCard {
@@ -271,7 +439,7 @@
     display: grid;
     place-content: center;
     border-radius: 10px;
-    background-color: #e0e8ef;
+    background-color: #fff;
     border-style: solid;
     border-width: 2px 2px 2px 2px;
     border-color: rgba(255, 255, 255, 0.333);
@@ -294,10 +462,17 @@
     position: absolute;
     display: grid;
     place-content: center;
-    top: 10px;
-    right: 8px;
-    bottom: 10px;
-    width: 36px;
-    height: calc(100% - 20px);
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 36px;
+    height: calc(100% - 36px);
+  }
+  .logo {
+    position: absolute;
+    z-index: 1;
+    left: 20px;
+    top: 15px;
+    width: 140px;
   }
 </style>

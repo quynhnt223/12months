@@ -1,55 +1,33 @@
 <script>
-  // Props: progress = 0–100 (%)
-  let { progress = 70, color = "#4e6cff" } = $props();
+  // number of total bars
+  let total = 5;
+  // number of filled bars (green)
+  let progress = 1;
 </script>
 
-<div class="line-wrap">
-  <div class="number">{progress}</div>
-  <div class="line">
-    <!-- dots above -->
-    {#each Array(5) as _, i}
-      <div class="dot" style={`opacity:${1 - i * 0.15};`}></div>
-    {/each}
-
-    <!-- main circle -->
-    <div class="circle" style={`background:${color};`}></div>
-
-    <!-- dots below -->
-    {#each Array(5) as _, i}
-      <div class="dot" style={`opacity:${1 - i * 0.15};`}></div>
-    {/each}
-  </div>
+<div class="bar-container">
+  {#each Array(total) as _, i}
+    <div class="bar {i < progress ? 'filled' : ''}"></div>
+  {/each}
 </div>
 
 <style>
-  .line-wrap {
+  .bar-container {
     display: flex;
-    align-items: center;
+    gap: 2px;
     justify-content: center;
-    gap: 8px;
-    font-size: 28px;
-    color: #5a5df5;
-    font-weight: 500;
-    scale: 0.5;
-  }
-
-  .line {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 6px;
   }
 
-  .dot {
-    width: 6px;
+  .bar {
+    width: 8px;
     height: 6px;
-    background: #5a5df5;
-    border-radius: 50%;
+    background: rgb(201, 206, 201);
+    border-radius: 6px;
   }
 
-  .circle {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+  .bar.filled {
+    background: #001503; /* soft mint green */
+    opacity: 1;
   }
 </style>

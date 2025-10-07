@@ -6,7 +6,7 @@
 
 <div class="cwrap">
   <div class="cheader">
-    <div class="title mt">Workspace</div>
+    <div class="title mt">Time Blocker</div>
     <div class="nav mn">
       <a href="/"><Icon name="map" color="#fff" /></a><a href="/"
         ><Icon name="goal" color="#fff" /></a
