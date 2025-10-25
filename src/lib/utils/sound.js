@@ -1,46 +1,205 @@
-// src/lib/sound.js
-let audio = null;
+// sound.js - Simple sound effects helper using Web Audio API
 
-export function playSound(src) {
-  // Create a fresh Audio instance for each sound
-  const newAudio = new Audio(src);
-  newAudio.loop = false;
-
-  newAudio.play().catch((err) => {
-    console.warn("Audio play failed:", err);
-  });
-
-  // Update the global reference for stop functionality
-  audio = newAudio;
-}
-
-export function stopSound() {
-  if (audio) {
-    audio.pause();
-    audio.currentTime = 0;
+class SoundEffects {
+  constructor() {
+    this.audioContext = null;
+    this.sounds = {};
+    this.init();
   }
-}
 
-export function getAudio() {
-  return audio;
-}
-export function handleClick(event) {
-  // look for the nearest ancestor (or self) that:
-  //  • has a data-sound attribute, OR
-  //  • has a class that starts with "sound"
-  const btn = event.target.closest('[data-sound], [class*="sound"]');
-  if (!btn) return;
+  init() {
+    // Create audio context on first user interaction
+    if (!this.audioContext) {
+      this.audioContext = new (window.AudioContext ||
+        window.webkitAudioContext)();
+    }
+  }
 
-  // first priority: data-sound
-  let key = btn.dataset.sound;
-  if (!key) {
-    // fallback: class="sound123"
-    const soundClass = Array.from(btn.classList).find((c) =>
-      c.startsWith("sound")
+  // Pop sound - short click
+  createPop1() {
+    const ctx = this.audioContext;
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(ctx.destination);
+
+    oscillator.frequency.setValueAtTime(800, ctx.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(
+      400,
+      ctx.currentTime + 0.1
     );
-    if (!soundClass) return;
-    key = soundClass.replace("sound", "");
+
+    gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+
+    oscillator.start(ctx.currentTime);
+    oscillator.stop(ctx.currentTime + 0.1);
   }
 
-  playSound(`/sound${key}.mp3`);
+  // Pop sound 2 - higher pitch
+  createPop2() {
+    const ctx = this.audioContext;
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(ctx.destination);
+
+    oscillator.frequency.setValueAtTime(1200, ctx.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(
+      600,
+      ctx.currentTime + 0.08
+    );
+
+    gainNode.gain.setValueAtTime(0.25, ctx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+
+    oscillator.start(ctx.currentTime);
+    oscillator.stop(ctx.currentTime + 0.08);
+  }
+
+  // Toggle on sound
+  createToggleOn() {
+    const ctx = this.audioContext;
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(ctx.destination);
+
+    oscillator.frequency.setValueAtTime(600, ctx.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(
+      900,
+      ctx.currentTime + 0.15
+    );
+
+    gainNode.gain.setValueAtTime(0.2, ctx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+
+    oscillator.start(ctx.currentTime);
+    oscillator.stop(ctx.currentTime + 0.15);
+  }
+
+  // Toggle off sound
+  createToggleOff() {
+    const ctx = this.audioContext;
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(ctx.destination);
+
+    oscillator.frequency.setValueAtTime(900, ctx.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(
+      600,
+      ctx.currentTime + 0.12
+    );
+
+    gainNode.gain.setValueAtTime(0.2, ctx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.12);
+
+    oscillator.start(ctx.currentTime);
+    oscillator.stop(ctx.currentTime + 0.12);
+  }
+
+  // Success sound
+  createSuccess() {
+    const ctx = this.audioContext;
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(ctx.destination);
+
+    oscillator.frequency.setValueAtTime(523, ctx.currentTime); // C
+    oscillator.frequency.setValueAtTime(659, ctx.currentTime + 0.1); // E
+    oscillator.frequency.setValueAtTime(784, ctx.currentTime + 0.2); // G
+
+    gainNode.gain.setValueAtTime(0.25, ctx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+
+    oscillator.start(ctx.currentTime);
+    oscillator.stop(ctx.currentTime + 0.3);
+  }
+
+  // Error sound
+  createError() {
+    const ctx = this.audioContext;
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(ctx.destination);
+
+    oscillator.frequency.setValueAtTime(400, ctx.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(
+      200,
+      ctx.currentTime + 0.2
+    );
+
+    gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+
+    oscillator.start(ctx.currentTime);
+    oscillator.stop(ctx.currentTime + 0.2);
+  }
+
+  play(soundName) {
+    this.init(); // Ensure audio context exists
+
+    switch (soundName) {
+      case "pop1":
+        this.createPop1();
+        break;
+      case "pop2":
+        this.createPop2();
+        break;
+      case "toggle-on":
+        this.createToggleOn();
+        break;
+      case "toggle-off":
+        this.createToggleOff();
+        break;
+      case "success":
+        this.createSuccess();
+        break;
+      case "error":
+        this.createError();
+        break;
+      default:
+        console.warn(`Sound "${soundName}" not found`);
+    }
+  }
 }
+
+// Create singleton instance
+const soundEffects = new SoundEffects();
+
+// Setup sound effects for elements with sound classes
+export function setupSoundEffects() {
+  const soundClasses = [
+    "pop1",
+    "pop2",
+    "toggle-on",
+    "toggle-off",
+    "success",
+    "error",
+  ];
+
+  soundClasses.forEach((soundClass) => {
+    document.addEventListener(
+      "click",
+      (e) => {
+        const target = e.target.closest(`.${soundClass}`);
+        if (target) {
+          soundEffects.play(soundClass);
+        }
+      },
+      true
+    );
+  });
+}
+
+// Export for manual use
+export { soundEffects };

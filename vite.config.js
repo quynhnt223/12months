@@ -8,5 +8,11 @@ export default defineConfig({
     host: true, // Allow LAN / external access
     allowedHosts: [".trycloudflare.com"], // Allow Cloudflare tunnel hosts
     port: 5173, // Ensure consistent port
+    fs: {
+      allow: ["."], // 👈 required for Chrome DevTools Workspaces to access source files
+    },
+  },
+  build: {
+    sourcemap: true, // 👈 ensures DevTools can trace compiled CSS/JS to .svelte files
   },
 });
