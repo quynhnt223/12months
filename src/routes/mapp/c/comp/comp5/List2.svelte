@@ -2,16 +2,16 @@
   import { states } from "../../utils/states.svelte.js";
   let list = $state([
     {
-      section: "Vật phẩm",
+      section: "⏱️ Về Thời gian Cúng",
       items: [
         {
-          name: "Nước đã đun sôi để nguội",
+          name: "🗓️ Ngày cúng",
           check: false,
           time: "hôm trước",
           img: "a1",
         },
         {
-          name: "Giấy đỏ quấn đốt nến",
+          name: "⏳ Giờ cúng",
           check: false,
           time: "16:50",
           img: "a2",
@@ -25,7 +25,7 @@
       ],
     },
     {
-      section: "Vệ Sinh",
+      section: "🧠 Tâm Thế",
       items: [
         { name: "Tắm rửa, đánh răng", check: false, time: "16:30" },
         { name: "Thay quần áo", check: false },
@@ -33,9 +33,9 @@
       ],
     },
     {
-      section: "Vào Lễ",
+      section: "⚙️ Pháp hành",
       items: [
-        { name: "Rót nước", check: false, time: "16:50" },
+        { name: "🥢 Cách hơ lửa 3 cây nhang", check: false, time: "16:50" },
         { name: "Thắp nến", check: false, time: "16:50" },
         { name: "Chỉnh Setting phone never", check: false },
         { name: "Check check Check", check: false },
@@ -139,13 +139,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #9b9e9b;
+    color: #a6b9aa;
     padding-bottom: 2px;
   }
   .section-header h4 {
     padding: 8px;
     border-radius: 8px 8px 0 0;
-    background: #3a3d3a;
+    background: #3a3a3a;
     width: 100%;
   }
   .list {
@@ -169,7 +169,7 @@
     display: flex;
     align-items: center;
     height: 42px;
-    background: #4a4b50;
+    background: rgb(66, 66, 66);
     padding-left: 3px;
   }
   .checkbox-wrap {

@@ -2,7 +2,7 @@
 {
   "name": "16 hours",
   "short_name": "16hours",
-  "start_url": "/",
+  "start_url": "/mapp",
   "display": "standalone",
   "background_color": "#47484c",
   "theme_color": "#47484c",

@@ -1,0 +1,27 @@
+:root {
+  --negr: #1ef875;
+  --bg1: #2f2f34;
+  --bg2: #54555c;
+  --hv1: #454345;
+  --t1: #888;
+  --t2: #b8b8b8;
+}
+* {
+  user-select: none;
+}
+button,
+span,
+div {
+  user-select: none;
+  -webkit-user-select: none;
+}
+body {
+  background: var(--bg1);
+  font-family: "Barlow", sans-serif;
+}
+button {
+  -webkit-tap-highlight-color: transparent; /* Safari / Chrome mobile */
+  -webkit-user-select: none; /* optional: prevent text highlight */
+  user-select: none;
+  background: none;
+}

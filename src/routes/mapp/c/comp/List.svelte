@@ -1,26 +1,18 @@
 <script>
-  import { states } from "../../utils/states.svelte.js";
   let list = $state([
     {
       section: "Vật phẩm",
       items: [
         {
-          name: "Nước đã đun sôi để nguội",
+          name: "Nước đã đun sôi để nguội, nhớ phải cho vào",
           check: false,
           time: "hôm trước",
-          img: "a1",
         },
-        {
-          name: "Giấy đỏ quấn đốt nến",
-          check: false,
-          time: "16:50",
-          img: "a2",
-        },
+        { name: "Giấy đỏ quấn đốt nến", check: false, time: "16:50" },
         {
           name: "Các Đồng Tiền, Xếp vào Đàn Pháp",
           check: false,
           time: "17:00",
-          img: "a3",
         },
       ],
     },
@@ -89,20 +81,10 @@
         {#each section.items as item, itemIdx}
           <div class="item">
             <div class="num">{itemIdx + 1}</div>
-            <button
-              class="item-name"
-              class:checked={item.check}
-              onclick={() => {
-                states.img = item.img;
-                states.isImageOpen = true;
-                states.currentImgTitle = item.name;
-              }}>{item.name}</button
+            <span class="item-name" class:checked={item.check}>{item.name}</span
             >
             <div class="time-wrap">
-              <div class="time">
-                <span class="material-symbols-rounded">timer</span>
-                {item.time}
-              </div>
+              <div class="time">⏱️ {item.time}</div>
             </div>
             <div class="checkbox-wrap">
               <button
@@ -110,9 +92,7 @@
                 class:box-checked={item.check}
                 onclick={() => check(item)}
                 aria-label="btn"
-                ><span class="material-symbols-rounded">check_small</span
-                ></button
-              >
+              ></button>
             </div>
           </div>
         {/each}
@@ -128,10 +108,9 @@
   }
 
   .section {
-    border-radius: 6px;
+    border-radius: 12px;
     margin-bottom: 1rem;
     color: #fff;
-    overflow: hidden;
   }
 
   .section-header {
@@ -139,38 +118,38 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #9b9e9b;
-    padding-bottom: 2px;
+    color: #a6b9aa;
+    padding-left: 6px;
   }
   .section-header h4 {
     padding: 8px;
-    border-radius: 8px 8px 0 0;
-    background: #3a3d3a;
-    width: 100%;
+    background: linear-gradient(157.28deg, #4d4d58 13.59%, #404046 85.24%);
+    box-shadow: inset 0px 1px 1px #7b7b7b;
+    border-radius: 6px 6px 2px 2px;
   }
   .list {
     display: flex;
     flex-direction: column;
-    gap: 1px;
+    gap: 5px;
+    padding: 5px;
   }
   .num {
     width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    background: #212121;
-    border-left: none;
-    font-weight: 800;
-    font-size: 18px;
+    height: 50px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    background: #2f2f34;
     display: grid;
     place-content: center;
-    color: rgb(0, 206, 62);
+    color: var(--gr1);
   }
   .item {
     display: flex;
     align-items: center;
-    height: 42px;
-    background: #4a4b50;
-    padding-left: 3px;
+    border-radius: 5px;
+    height: 50px;
+    background: linear-gradient(90deg, #3e3e44 0%, #45454c 100%);
+    box-shadow: inset 0px 1px 1px #5a5050;
   }
   .checkbox-wrap {
     width: 45px;
@@ -183,12 +162,10 @@
     height: 32px;
     border-radius: 8px;
     background: none;
-    color: #424242;
-    border: solid 2px rgb(0, 206, 62);
+    border: solid 2px var(--gr1);
   }
   .box-checked {
-    background: rgb(0, 206, 62);
-    color: #212121;
+    background: var(--gr1);
   }
   .item-name {
     flex: 1;
@@ -196,8 +173,6 @@
     color: #fff;
     font-size: 1rem;
     transition: all 0.3s;
-    background: none;
-    text-align: left;
   }
 
   .item-name.checked {
@@ -207,17 +182,13 @@
   .time {
     font-size: 10px;
     height: 32px;
-    background: rgb(0, 206, 62);
+    background: var(--gr1);
     color: #000;
     font-weight: 700;
     border-radius: 5px;
-    display: flex;
-    align-items: center;
+    display: grid;
+    place-content: center;
     padding: 5px;
-  }
-  .time .material-symbols-rounded {
-    font-size: 18px;
-    margin-right: 3px;
   }
   .time-wrap {
     padding-left: 10px;

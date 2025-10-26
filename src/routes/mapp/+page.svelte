@@ -1,4 +1,5 @@
 <script>
+  import "./app.css";
   import { states } from "./c/utils/states.svelte.js";
   import Comp1 from "./c/Comp1.svelte";
   import Comp2 from "./c/Comp2.svelte";
@@ -28,6 +29,7 @@
   import Comp26 from "./c/Comp26.svelte";
   import Comp27 from "./c/Comp27.svelte";
   import Comp28 from "./c/Comp28.svelte";
+  import Btn1 from "./c/comp/btn/Btn1.svelte";
 
   // prettier-ignore
   const components = [Comp1, Comp2, Comp3, Comp4, Comp5, Comp6, Comp7, Comp8, Comp9, Comp10, Comp11, Comp12, Comp13, Comp14, Comp15, Comp16, Comp17, Comp18, Comp19, Comp20, Comp21, Comp22, Comp23, Comp24, Comp25, Comp26, Comp27, Comp28];
@@ -91,25 +93,11 @@
 </div>
 
 {#if states.isOpen}
-  <div class="backdrop">
-    <div class="wrap2">
-      <div class="header">
-        <div class="title">
-          <div class="st">Morning</div>
-          <div class="nd">Routine</div>
-        </div>
-        <div class="btns">
-          <button class="btn" onclick={close}>✏️</button>
-          <button class="btn" onclick={close}>🗓️</button>
-          <button class="btn" onclick={close}>✖️</button>
-        </div>
-      </div>
-      <div class="body">
-        {#if components[activeComponentIndex]}
-          <Active />
-        {/if}
-      </div>
-    </div>
+  <div class="comp-wrap">
+    <Btn1 cl={close} i="close" cs="closeBtn"></Btn1>
+    {#if components[activeComponentIndex]}
+      <Active />
+    {/if}
   </div>
 {/if}
 
@@ -118,93 +106,8 @@
     position: fixed;
     inset: 0;
     padding: 6px;
-    background: #47484c;
+    background: var(--bg1);
     padding-bottom: 86px;
-  }
-  .wrap2 {
-    display: flex;
-    flex-direction: column;
-  }
-  .body {
-    flex: 1;
-    height: calc(100% - 55px);
-    padding-top: 3px;
-    background: #37383d;
-    overflow: auto;
-    padding: 1px;
-    padding-bottom: 4px;
-    padding-top: 1px;
-    border-radius: 8px;
-    box-shadow:
-      inset -1px -2px 2px rgba(49, 49, 58, 0.81),
-      inset 1px 2px 2px #232429;
-  }
-  .header {
-    display: flex;
-    align-items: center;
-    height: 55px;
-  }
-  .title {
-    font-size: 32px;
-    color: var(--gr1);
-    text-transform: uppercase;
-    font-weight: 800;
-    display: flex;
-    flex: 1;
-    padding-right: 20px;
-  }
-  .nd {
-    font-size: 12px;
-    opacity: 0.3;
-    font-weight: 900;
-    padding-left: 6px;
-    padding-top: 6px;
-  }
-  .btns {
-    display: flex;
-    padding-left: 20px;
-    align-items: center;
-    gap: 2px;
-
-    background: #37383d;
-    box-shadow:
-      inset -1px -2px 1px rgba(49, 49, 58, 0.81),
-      inset 1px 1px 1px #232429;
-    border-radius: 8px;
-    padding: 2px;
-  }
-  .btns .btn {
-    width: 45px;
-    height: 45px;
-    border-radius: 8px;
-    display: grid;
-    place-content: center;
-    background: #54555c;
-    box-shadow:
-      inset 0px -1px 1px #292b2e,
-      inset 0px 1px 0px #83818e;
-  }
-  .backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 999;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .wrap2 {
-    position: fixed;
-    inset: 0;
-    padding: 5px;
-    background: #47484c;
-    padding-bottom: 68px;
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
-    touch-action: pan-y;
-    -webkit-user-select: none;
-    user-select: none;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
   }
 
   .grid {
@@ -217,7 +120,7 @@
   }
 
   .btn {
-    background-color: #37383d;
+    background-color: var(--bg2);
     color: white;
     font-size: 1.5rem;
     font-weight: 600;
@@ -253,20 +156,15 @@
     opacity: 0.8;
   }
 
-  .close {
-    width: 45px;
-    height: 45px;
-    border-radius: 12px;
-    color: #fff;
-    background-color: #37383d;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    box-shadow:
-      0px 1px 0px #2f2c2c,
-      inset 0px 1px 0px rgba(174, 174, 174, 0.17);
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-    z-index: 1000;
+  .comp-wrap {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+  }
+  :global(.closeBtn) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99999999;
   }
 </style>
